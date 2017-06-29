@@ -55,14 +55,14 @@ export class ProductService {
     // if (filter !== null || filter === "0"){
     if (filter !== null){
       
-      if (filter.text){
-        customFilter = customFilter.concat(`q=${filter.text}`)     
-      }
 
-      if (filter.category !== '0'){
+      if (filter.category !== undefined){
         customFilter = customFilter.concat(`&category.id=${filter.category}`)
       }
 
+      if (filter.text){
+        customFilter = customFilter.concat(`q=${filter.text}`)     
+      }
 
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
     | Yellow Path                                                      |
