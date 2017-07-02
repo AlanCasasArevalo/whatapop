@@ -54,8 +54,7 @@ export class ProductService {
 
     // if (filter !== null || filter === "0"){
     if (filter !== null){
-      
-
+    
       if (filter.category !== undefined){
         customFilter = customFilter.concat(`&category.id=${filter.category}`)
       }
@@ -82,7 +81,13 @@ export class ProductService {
         customFilter = customFilter.concat(`&state=${filter.state}`)
       }
 
-      filter = null
+      if(filter.category === "0"){
+        filter = null
+        customFilter = null
+
+        console.log(`${this._backendUri}/products?${customFilter}&${customOrder}`)
+      }
+
 
     }
       // http://localhost:3004/products?_sort=publishedDate&_order=DESC&q=uncharted&category.id=1
@@ -111,8 +116,6 @@ export class ProductService {
       //   default:
       //     break;
       // }
-      // console.log(`${this._backendUri}/products?${customFilter}&${customOrder}`)
-
 
 
 
